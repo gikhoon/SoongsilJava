@@ -27,16 +27,21 @@ public class Problem16 {
             }
             int computerChoice = (int)(Math.random()*3);
             if((playerChoice==0)&&computerChoice==2){
-                System.out.println("사용자 = "+str[playerChoice]+" , 컴퓨터 = "+str[computerChoice]+ ", 사용자가 이겼습니다.");
+                System.out.println("사용자 = "+str[playerChoice]+
+                        " , 컴퓨터 = "+str[computerChoice]+ ", 사용자가 이겼습니다.");
                 continue;
             }
             if((playerChoice==2)&&(computerChoice==0)){
-                System.out.println("사용자 = "+str[playerChoice]+" , 컴퓨터 = "+str[computerChoice]+ ", 컴퓨터가 이겼습니다.");
+                System.out.println("사용자 = "+str[playerChoice]+
+                        " , 컴퓨터 = "+str[computerChoice]+ ", 컴퓨터가 이겼습니다.");
                 continue;
             }
-            if(playerChoice>computerChoice) System.out.println("사용자 = "+str[playerChoice]+" , 컴퓨터 = "+str[computerChoice]+ ", 사용자가 이겼습니다.");
-            else if(playerChoice<computerChoice) System.out.println("사용자 = "+str[playerChoice]+" , 컴퓨터 = "+str[computerChoice]+ ", 컴퓨터가 이겼습니다.");
-            else System.out.println("사용자 = "+str[playerChoice]+" , 컴퓨터 = "+str[computerChoice]+ ", 비겼습니다.");
+            if(playerChoice>computerChoice) System.out.println("사용자 = "+str[playerChoice]+
+                    " , 컴퓨터 = "+str[computerChoice]+ ", 사용자가 이겼습니다.");
+            else if(playerChoice<computerChoice) System.out.println("사용자 = "+str[playerChoice]+
+                    " , 컴퓨터 = "+str[computerChoice]+ ", 컴퓨터가 이겼습니다.");
+            else System.out.println("사용자 = "+str[playerChoice]+
+                        " , 컴퓨터 = "+str[computerChoice]+ ", 비겼습니다.");
         }
     }
 }
