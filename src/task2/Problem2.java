@@ -1,3 +1,5 @@
+package task2;
+
 public class Problem2 {
     public static void main(String[] args) {
         int [][] n = {{1},{1,2,3},{1},{1,2,3,4},{1,2}};

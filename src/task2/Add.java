@@ -1,3 +1,5 @@
+package task2;
+
 public class Add {
     public static void main(String[] args) {
         int sum =0;

@@ -9,7 +9,7 @@ public class Array_NullPointException_Test {
         a = null;
         int [] array = new int[3];
         System.out.println(array[2]); //0출력
-        array=null; //heap에 있는 객체 반환.
+        array=null; //heap에 있는 객체 반환. 가비지
 //        System.out.println(array[2]); //오류[NullPointException]
     }
 }
