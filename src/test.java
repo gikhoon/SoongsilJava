@@ -14,7 +14,7 @@ public class test {
         System.out.println(b);
         byte d = 0144; //8진수일때 크기가 byte 안에 있고 마지막 비트가 0이므로 자동으로 바뀐다
         //byte e = 0244; 에러 발생 0244는 마지막 비트가 1이므로 형 변환을 해줘야한다 양수인 값이 음수로 바뀌지 때문에 값의 손실이 있다.
-        byte e = (byte)0244;
+        byte e = (byte)0244; //10010010
         System.out.println("e : "+e);
         //byte c = 0x8f; 에러 발생 0x8f는 byte가 저장할 수 있는 값 내에 있지만 10진수가 아닐때
         // (8진수,16진수일때)는 제일 밖 값이 1이어야한다. 0x8f = 10001111
@@ -40,10 +40,17 @@ class test3{
 }
 class test4{
     public static void main(String[] args) {
-        byte a = 20;
+        int a = -20;
+        byte k = -20;
         byte b = (20 >>2);
-        //byte c = (a << 2) 불가능(에러) a<<2는 기본적으로  int이다 그리고 식이기 때문에 크기가 작더라도 자동 형 변환이 안된다.
-        System.out.println(b);
+        byte c = 2;
+        byte z = (-20 >>2); //불가능 컴파일 에러 -20은
+        byte y = -20>>2;
+        byte x = 20<<32; //20출력
+        //byte x = -20>>>2; 컴파일 에러
+        //byte c = (a >> 2); 불가능(에러) a<<2는 기본적으로  int이다 그리고 식이기 때문에 크기가 작더라도 자동 형 변환이 안된다.
+        //byte d = (40<<2);
+        System.out.println(x);
     }
 }
 class test5{
@@ -75,11 +82,15 @@ class test7{
 
     }
 }
-class test8{
+class test8 {
     public static void main(String[] args) {
-        int[][] num ={{1,2,3},{4,5,6},{7,8,9}};
-        for(int[] k:num){
-            System.out.println(k[k[0]]+" ");
+        int[][] num = {{1, 2, 3}, {3, 5, 6}, {2, 8, 9}};
+        for (int[] k : num) {
+            try {
+                System.out.println(k[k[0]] + " ");
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Error");
+            }
         }
     }
 }
@@ -108,6 +119,7 @@ class test10 {
     public static void main(String[] args) {
         try {
             char[] a = new char[]{'A', 'B', 'C'};
+            System.out.println(a[args.length]);
             try {
                 for (int i = 0; i <= a.length; i++)
                     System.out.print(a[i]+" ");
@@ -118,10 +130,115 @@ class test10 {
                 System.out.println("E ");
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("F "); //안쪽 try에서 발생한 에러는 안쪽 catch에 있는 오류만 잡아낸다
+            System.out.println("F "); //안쪽 try에서 에러를 처리하면 실행 안되고 처리를 못했으면 try finally가 다 끝나고 처리한다
         } finally {
             System.out.println("G ");
         }
     }
 }
+class test11{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int d = scanner.nextInt();
+        int a = scanner.nextInt();
+        try{
+            System.out.println(d/a);
+        }catch (ArithmeticException e){
+            System.out.println("0으로 못나눠");
+        }
+    }
+}
+class test12{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double d = scanner.nextInt(); //double이 들어가면 a/0이면 Infinity 출력 0/0이면 NaN출력
+        int a = scanner.nextInt();
+        System.out.println(d/a);
+    }
+}
 
+class Book {
+    String title;
+    String author;
+    int ISBN;
+
+    public Book(String title, String author, int ISBN) {
+        this.title = title;
+        this.author = author;
+        this.ISBN = ISBN;
+    }
+
+    public Book(String title, int ISBN) {
+        this(title, "I’m like TT", ISBN);
+    }
+
+    public Book() {
+        this(null, null, 0);
+        System.out.println("Just like TT ");
+    }
+
+    public static void main(String[] args) {
+        Book book[]=new Book[3];
+        book[0] = new Book("이런내맘모르고", "너무해너무해", 3333);
+        book[1]= new Book("tell me", 1);
+        book[2]= new Book();
+        for(int i=0;i<book.length;++i)
+            System.out.println(book[i].title+" "+book[i].author+" "+book[i].ISBN);
+    }
+}
+class test13{
+    public static void main(String[] args) {
+        try{
+            int a[] = new int[]{'A', 'B', 'C'};
+            System.out.println(a[args.length]);
+            try {
+                for (int i =0; i <= a.length; i++)
+                    System.out.println(a[i]);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("D");
+            } finally {
+                System.out.println("E");
+            }
+        } catch(NullPointerException e) {
+            System.out.println("F");
+        } finally {
+            System.out.println("G");
+        }
+    }
+}
+
+class test14 {
+    public static void main(String[] args) {
+        int size = 0;
+        int[] arr = new int[size];
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i]);
+        }
+    }
+}
+
+class test15{
+    public static void main(String[] args) {
+        int x1 = 8;
+        int y1 = 8;
+        int radius1 = 8;
+
+        int x2 = 0;
+        int y2 = 0;
+        int radius2 = 8;
+
+        int distanceX = (x1 - x2) ^ 2;
+        int distanceY = (y1 - y2) ^ 2;
+        int distance = distanceX + distanceY;
+
+        int d = (radius1 + radius2) ^ 2;
+
+        System.out.println(distance+" "+d);
+        if (distance < d)
+            System.out.println("두 원은 겹칩니다.");
+        else
+            System.out.println("두 원은 겹치지 않습니다.");
+    }
+
+}

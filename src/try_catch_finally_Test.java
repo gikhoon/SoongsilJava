@@ -14,8 +14,6 @@ public class try_catch_finally_Test {
             System.out.println("여기는 finally입니다");
         }
         return 2;
-
-
     }
     public static void main(String[] args) {
         try_catch_finally_Test test = new try_catch_finally_Test();
