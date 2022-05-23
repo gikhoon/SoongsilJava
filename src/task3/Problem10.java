@@ -1,3 +1,5 @@
+package task3;
+
 import java.util.Scanner;
 class Dictionary{
     private static String[] kor = {"사람", "아기", "돈", "미래", "희망"};

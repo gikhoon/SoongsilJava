@@ -1,3 +1,5 @@
+package task3;
+
 class Rectangle{
     private int x;
     private int y;
