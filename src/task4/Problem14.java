@@ -1,3 +1,5 @@
+package task4;
+
 interface Shape{
     final double PI = 3.14;
     void draw();
@@ -30,7 +32,7 @@ class Oval implements Shape{
     }
     @Override
     public double getArea(){
-        return width*height*PI;
+        return width*height*PI*1/4;
     }
     Oval(int width,int height){
         this.width=width;

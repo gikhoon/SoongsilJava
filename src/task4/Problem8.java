@@ -1,3 +1,5 @@
+package task4;
+
 class Point{
     private int x;
     private int y;
