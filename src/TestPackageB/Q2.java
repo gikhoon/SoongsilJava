@@ -34,7 +34,11 @@ public class Q2 {
     }
 }
 
+
+
+
 class ChildException extends Exception { }
+class GrandChildException extends ChildException{}
 class ExceptionHandlingTest {
     static int count = 0;
     public static void main(String[ ] args) {
@@ -51,4 +55,95 @@ class ExceptionHandlingTest {
             }
         }
     }
+}
+class ExceptionHandlingTest2 {
+    public static void main(String args[ ]) {
+        try {
+            throw new GrandChildException( );
+        } catch(GrandChildException g) {
+            System.out.println("GrandChildException");
+        } catch(ChildException c) {
+            System.out.println("ChildException");
+        }
+        try {
+            throw new GrandChildException( );
+        } catch(ChildException c) {
+            System.out.println("ChildException");
+        }
+    }
+}
+
+interface RemoteControl{
+    void turnOn();
+
+    void turnOff();
+}
+class Problem7{
+    public static void main(String[] args) {
+        RemoteControl rc = new RemoteControl() {
+            @Override
+            public void turnOn() {
+                System.out.println("Turned On");
+            }
+
+            @Override
+            public void turnOff() {
+                System.out.println("Turned Off");
+            }
+        };
+        rc.turnOn();
+        rc.turnOff();
+    }
+}
+
+class Window {
+    Window(int marker) {
+        System.out.println("Window(" + marker + ")");
+    }
+}
+class House {
+    Window w1 = new Window(1);
+    House() {
+        System.out.println("House( )");
+        w3 = new Window(33);
+    }
+    Window w2 = new Window(2);
+    void f() {
+        System.out.println("f( )");
+    }
+    Window w3 = new Window(3);
+}
+
+class InitializationTest {
+    public static void main(String[ ] args) {
+        House h = new House( );
+        h.f();
+    }
+}
+
+class Cup {
+    Cup(int marker) {
+        System.out.println("Cup(" + marker + ")"); }
+    void f(int marker) {
+        System.out.println("f(" + marker + ")"); }
+}
+class Cups {
+    static Cup cup1;
+    static Cup cup2;
+    static {
+        cup1 = new Cup(1);
+        cup2 = new Cup(2);
+    }
+    Cups() {
+        System.out.println("Cups( )");
+    }
+}
+
+class StaticTest {
+    public static void main(String args[ ]) {
+        System.out.println("main( )");
+        Cups.cup1.f(99);
+    }
+    static Cups cups1 = new Cups( );
+    static Cups cups2 = new Cups( );
 }
