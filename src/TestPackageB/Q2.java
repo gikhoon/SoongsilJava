@@ -106,27 +106,37 @@ class Problem7{
 
 
 //Q9
+class AAA{
+
+}
 class Window {
+    int marker;
     Window(int marker) {
+        this.marker = marker;
         System.out.println("Window(" + marker + ")");
     }
 }
-class House {
+class House extends AAA{
     Window w1 = new Window(1);
     House() {
         System.out.println("House( )");
-        w3 = new Window(33);
+        w3 = new Window(55);
     }
     Window w2 = new Window(2);
     void f() {
         System.out.println("f( )");
     }
     Window w3 = new Window(3);
+    {
+        w3 = new Window(33);
+    }
+
 }
 
 class InitializationTest {
     public static void main(String[ ] args) {
         House h = new House( );
+        System.out.println(h.w3.marker);
         System.out.println();
         House h2 = new House();
         h.f();
