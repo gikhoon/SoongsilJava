@@ -127,6 +127,8 @@ class House {
 class InitializationTest {
     public static void main(String[ ] args) {
         House h = new House( );
+        System.out.println();
+        House h2 = new House();
         h.f();
     }
 }
@@ -200,7 +202,7 @@ class Mug {
         System.out.println("f(" + marker + ")"); }
 }
 class Mugs {
-    static Mug mug1 = new Mug(99); //static이면 처음 만들어질 때 생성되고 static이 아니면 객체가 만들어질때마자 실행된다.
+    Mug mug1 = new Mug(99); //static이면 처음 만들어질 때 생성되고 static이 아니면 객체가 만들어질때마자 실행된다.
     Mug mug2;
     {
         mug1 = new Mug(1);
@@ -258,7 +260,6 @@ class InterfaceTest {
 
 //Q15
 class Egg {
-
     protected class Yolk {
         public Yolk() { System.out.println("Egg.Yolk()"); }
         public void f() { System.out.println("Egg.Yolk.f()"); }
@@ -282,5 +283,11 @@ class BigEgg extends Egg {
 }
 
 //Q8
-class Q8{
+
+class Q8A{
+
+}
+class Q8<L,E>{
+    Q8A a = new Q8A();
+
 }
