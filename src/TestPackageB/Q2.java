@@ -234,7 +234,9 @@ interface I1 extends I2 { void f(); }
 interface I2 { default void f() { System.out.println("F() in I2");} }
 interface I3 {void f(); }
 interface I4 { static void f() { System.out.println("f() in I4");} }
-abstract class AC1 { void f() { System.out.println("f() in AC");} }
+abstract class AC1 {
+    void f() { System.out.println("f() in AC");}
+}
 abstract class AC2 {
     abstract void f();
 }
@@ -259,7 +261,8 @@ class InterfaceTest {
 }
 
 //Q15
-class Egg {
+
+class Egg{
     protected class Yolk {
         public Yolk() { System.out.println("Egg.Yolk()"); }
         public void f() { System.out.println("Egg.Yolk.f()"); }
@@ -273,7 +276,7 @@ class BigEgg extends Egg {
     public class Yolk extends Egg.Yolk {
         public Yolk() { System.out.println("BigEgg.Yolk()"); }
         public void f() { System.out.println("BigEgg.Yolk.f()"); }
-    }
+        }
     public BigEgg() { insertYolk(new Yolk()); }
     public static void main(String[] args) {
         Egg e = new BigEgg();
@@ -283,11 +286,12 @@ class BigEgg extends Egg {
 }
 
 //Q8
-
-class Q8A{
-
-}
-class Q8<L,E>{
-    Q8A a = new Q8A();
-
+class Q{
+    public static void main(String[] args) {
+        String str1 = "Happy ";
+        String str2 = str1;
+        str2+="New Year! ";
+        str1 = str2.substring(6);
+        System.out.println(str1 + str2);
+    }
 }
